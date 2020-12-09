@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  app:
+    container_name: workspace-postgres
+    image: application.jar
+    build: ./
+    expose:
+      - 8088
+    ports:
+      - "8088:8088"
+    depends_on:
+      - postgresqldb
+  postgresqldb:
+    image: postgres
+    container_name: postgresqldb
+    ports:
+      - 5000:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
