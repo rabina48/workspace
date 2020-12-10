@@ -43,7 +43,6 @@ public class WorkspaceServiceImpl implements WorkspaceService {
         workspace.setCode(workspace.getCode());
         workspace.setCreatedAt(workspace.getCreatedAt());
         workspace.setUpdate_at(workspace.getUpdate_at());
-
         return null;
     }
 

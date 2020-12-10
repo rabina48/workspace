@@ -33,9 +33,11 @@ public class UserServiceImpl implements UserService {
         }
         if (user.getEmail().equals(user1.getEmail())) {
             return new BaseResponse(400, false, "Email Already exits!", null);
-
         }
-            return new BaseResponse(200, true, "success", userRepository.save(user));
+        if (!user.isPersonal()) {
+            return new BaseResponse(400, false, "Required Organizational");
+        }
+        return new BaseResponse(200, true, "success", userRepository.save(user));
 
     }
 
@@ -54,7 +56,7 @@ public class UserServiceImpl implements UserService {
         user.setPersonal(user.isPersonal());
 
 
-        return new BaseResponse(200,true,"Added Success",userRepository.save(user));
+        return new BaseResponse(200, true, "Added Success", userRepository.save(user));
     }
 
     @Override
