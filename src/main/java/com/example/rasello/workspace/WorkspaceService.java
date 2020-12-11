@@ -20,6 +20,5 @@ public interface WorkspaceService {
 
     Response deleteById(UUID id);
 
-    //List<Response> getAll(List<Long> roleId);
 
 }

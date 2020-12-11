@@ -2,6 +2,7 @@ package com.example.rasello.user;
 
 import com.example.rasello.response.BaseResponse;
 import com.example.rasello.response.Response;
+import com.example.rasello.user.request.UserWorkspace;
 import com.example.rasello.workspace.Workspace;
 import com.example.rasello.workspace.request.WorkspaceRequest;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public interface UserService {
     BaseResponse<UserProfile> update(UUID userId, UserProfile userProfile );
 
     Response deleteById(UUID userId);
+
+    BaseResponse<UserProfile> addUserWorkspace(UUID workspaceId, UserWorkspace request);
 
 
 
