@@ -2,6 +2,7 @@ package com.example.rasello.user;
 
 import com.example.rasello.response.BaseResponse;
 import com.example.rasello.response.Response;
+import com.example.rasello.user.request.UserWorkspace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,5 +64,10 @@ public class UserServiceImpl implements UserService {
     public Response deleteById(UUID userId) {
         userRepository.deleteById(userId);
         return new Response(200, true, "Success");
+    }
+
+    @Override
+    public BaseResponse<UserProfile> addUserWorkspace(UUID workspaceId, UserWorkspace request) {
+        return null;
     }
 }
