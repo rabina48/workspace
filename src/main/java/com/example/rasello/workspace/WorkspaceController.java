@@ -17,7 +17,7 @@ public class WorkspaceController {
 
     @GetMapping("/workspace")
     public BaseResponse<Workspace> getAll() {
-        return workspaceService.getAll();
+        return workspaceService.getAllWorkspaces();
     }
 
     @GetMapping("/workspace/{id}")

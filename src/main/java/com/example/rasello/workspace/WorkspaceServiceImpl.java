@@ -7,6 +7,7 @@ import com.example.rasello.workspace.request.WorkspaceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ public class WorkspaceServiceImpl implements WorkspaceService {
     private  WorkspaceRepository workspaceRepository;
 
 
-    public BaseResponse<Workspace> getAll() {
+    public BaseResponse<Workspace> getAllWorkspaces() {
         return  new BaseResponse(200,true,"Success",workspaceRepository.findAll());
     }
 
@@ -50,5 +51,10 @@ public class WorkspaceServiceImpl implements WorkspaceService {
     public Response deleteById(UUID id) {
         workspaceRepository.deleteById(id);
         return new Response(200,true,"Success");
+    }
+
+    @Override
+    public List<Workspace> getAll(List<UUID> workspaceId) {
+        return workspaceRepository.findAllById(workspaceId);
     }
 }

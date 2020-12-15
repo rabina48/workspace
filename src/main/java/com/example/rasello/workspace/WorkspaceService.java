@@ -5,12 +5,13 @@ import com.example.rasello.response.Response;
 import com.example.rasello.workspace.request.WorkspaceRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public interface WorkspaceService {
 
-    BaseResponse<Workspace> getAll();
+    BaseResponse<Workspace> getAllWorkspaces();
 
     BaseResponse<Workspace> addNewWorkspace(Workspace workspace);
 
@@ -19,6 +20,8 @@ public interface WorkspaceService {
     BaseResponse<Workspace> update(UUID workSpaceId);
 
     Response deleteById(UUID id);
+
+    List<Workspace> getAll(List<UUID> workspaceId);
 
 
 }

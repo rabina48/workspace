@@ -77,20 +77,20 @@ public class UserServiceImpl implements UserService {
 
         UserProfile user = new UserProfile();
         UUID userIds = user.getId();
-        if (userIds.equals(null)){
-            return  new BaseResponse(400, false,"User does not exist",null);
+        if (userIds.equals(null)) {
+            return new BaseResponse(400, false, "User does not exist", null);
         }
 
         List<UUID> workspaceId = request.getWorkspaceId();
 
-        if(workspaceId != null && workspaceId.isEmpty())
-            List<Workspace> workspaces = workspaceService.getAll();
-              user.setWorkspaces(workspaces);
+        if (workspaceId != null && !workspaceId.isEmpty())
+         List<Workspace> workspaces = workspaceService.getAll(workspaceId);
+         user.setWorkspaces(workspaceId);
 
         return new BaseResponse<>(200, true, "Added Successfully", userRepository.save(user));
 
     }
 
 
-    }
+}
 
