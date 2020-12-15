@@ -1,5 +1,6 @@
 package com.example.rasello.user;
 
+import com.example.rasello.workspace.Workspace;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -8,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -28,5 +30,6 @@ public class UserProfile {
     private String email;
     private Long phone;
     private boolean personal;
+    private List<Workspace> workspaces;
 
 }

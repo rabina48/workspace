@@ -3,9 +3,12 @@ package com.example.rasello.user;
 import com.example.rasello.response.BaseResponse;
 import com.example.rasello.response.Response;
 import com.example.rasello.user.request.UserWorkspace;
+import com.example.rasello.workspace.Workspace;
+import com.example.rasello.workspace.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -15,6 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private WorkspaceService workspaceService;
 
     @Override
     public BaseResponse<UserProfile> addUser(UserProfile user) {
@@ -67,7 +73,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResponse<UserProfile> addUserWorkspace(UUID workspaceId, UserWorkspace request) {
-        return null;
+    public BaseResponse<UserProfile> addUserWorkspace(UUID userId, UserWorkspace request) {
+
+        UserProfile user = new UserProfile();
+        UUID userIds = user.getId();
+        if (userIds.equals(null)){
+            return  new BaseResponse(400, false,"User does not exist",null);
+        }
+
+        List<UUID> workspaceId = request.getWorkspaceId();
+
+        if(workspaceId != null && workspaceId.isEmpty())
+            List<Workspace> workspaces = workspaceService.getAll();
+              user.setWorkspaces(workspaces);
+
+        return new BaseResponse<>(200, true, "Added Successfully", userRepository.save(user));
+
     }
-}
+
+
+    }
+
