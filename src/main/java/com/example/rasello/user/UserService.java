@@ -17,7 +17,7 @@ public interface UserService {
 
     Response deleteById(UUID userId);
 
-    BaseResponse<UserProfile> addUserWorkspace(UUID workspaceId, UserWorkspace request);
+    BaseResponse<UserProfile> addUserWorkspace(UUID userId, UserWorkspace request);
 
 
 
