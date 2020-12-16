@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +27,11 @@ public class UserProfile {
     private String email;
     private Long phone;
     private boolean personal;
+
+    @JoinTable(name = "user_workspace",
+            joinColumns = @JoinColumn(name = "workspace_id"))
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL )
     private List<Workspace> workspaces;
 
 }

@@ -6,6 +6,7 @@ import com.example.rasello.workspace.request.WorkspaceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -16,8 +17,8 @@ public class WorkspaceController {
     private WorkspaceService workspaceService;
 
     @GetMapping("/workspace")
-    public BaseResponse<Workspace> getAll() {
-        return workspaceService.getAll();
+    public BaseResponse<List<Workspace>> getAll() {
+        return workspaceService.getAllWorkspaces();
     }
 
     @GetMapping("/workspace/{id}")
