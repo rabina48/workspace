@@ -11,7 +11,7 @@ import java.util.UUID;
 @Service
 public interface WorkspaceService {
 
-    BaseResponse<Workspace> getAllWorkspaces();
+    BaseResponse<List<Workspace>> getAllWorkspaces();
 
     BaseResponse<Workspace> addNewWorkspace(Workspace workspace);
 

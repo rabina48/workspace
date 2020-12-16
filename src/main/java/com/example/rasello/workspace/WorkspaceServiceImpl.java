@@ -2,8 +2,6 @@ package com.example.rasello.workspace;
 
 import com.example.rasello.response.BaseResponse;
 import com.example.rasello.response.Response;
-import com.example.rasello.user.UserProfile;
-import com.example.rasello.workspace.request.WorkspaceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,8 @@ public class WorkspaceServiceImpl implements WorkspaceService {
     private  WorkspaceRepository workspaceRepository;
 
 
-    public BaseResponse<Workspace> getAllWorkspaces() {
+    @Override
+    public BaseResponse<List<Workspace>> getAllWorkspaces() {
         return  new BaseResponse(200,true,"Success",workspaceRepository.findAll());
     }
 
